@@ -14,10 +14,10 @@
 
 1. Initialize MPI
 2. Get rank and size of the MPI Communicator
-3. If rank == 0 
-      Load the dataset
-      Standardize the dataset 
-      Split the data into subsets
+3. If rank == 0 \n
+      Load the dataset \n
+      Standardize the dataset \n
+      Split the data into subsets \n
 4. Open the channel from the dataset to the processes
 5. Split the dataset into local datasets for each process
 6. For each process: 
