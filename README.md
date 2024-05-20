@@ -2,9 +2,9 @@
 
 ## 1. Algorithm Purpose
 Parallel PCA is used for a multitude of reasons: 
-* Handling large datasets: PCA can become inefficient and even infeasible for large datasets. This is due to the fact PCA can struggle with memory and computational constraints when dealing with large datasets. Parallel PCA is a solution to this problem as it distributes the computational efforts across multiple processors.
-* Computational Efficiency/ Scalability: Adding parallelization to PCA can reduce the time it takes for computation. Parallel PCA is also designed to scale with the amount of data and the number of available computational resources. Both of these aspects can be extremely helpful when dealing with high dimensional or large datasets. 
-* Application: Parallel PCA can be utilized in many different fields to include image processing, finance, etc. Any domain where there is a need for dimensionality reduction, feature extraction or dara visualization, Parallel PCA can be utilized.
+* **Handling large datasets**: PCA can become inefficient and even infeasible for large datasets. This is due to the fact PCA can struggle with memory and computational constraints when dealing with large datasets. Parallel PCA is a solution to this problem as it distributes the computational efforts across multiple processors.
+* **Computational Efficiency/ Scalability**: Adding parallelization to PCA can reduce the time it takes for computation. Parallel PCA is also designed to scale with the amount of data and the number of available computational resources. Both of these aspects can be extremely helpful when dealing with high dimensional or large datasets. 
+* **Application**: Parallel PCA can be utilized in many different fields to include image processing, finance, etc. Any domain where there is a need for dimensionality reduction, feature extraction or dara visualization, Parallel PCA can be utilized.
 ## 2. Hyperparameters
 
 ## 3. Background
