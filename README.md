@@ -2,7 +2,8 @@
 
 ## 1. Algorithm Purpose
 Parallel PCA is used for a multitude of reasons: 
-* Handling large datasets: 
+* Handling large datasets: PCA can become inefficient and even infeasible for large datasets. This is due to the fact PCA can struggle with memory and computational constraints when dealing with large datasets. Parallel PCA is a solution to this problem as it distributes the computational efforts across multiple processors.
+*  
 
 ## 2. Hyperparameters
 
