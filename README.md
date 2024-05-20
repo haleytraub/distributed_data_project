@@ -49,6 +49,8 @@ Principal component analysis is an unsupervised learning dimensionality reductio
 
 ## 5. Example code to import and use module
 
+Please refer to the other coding modules in this repository for an example import/ use module.
+
 ## 6. Visualization or animation of algorithm steps or results
 
 ## 7. Benchmark Results
