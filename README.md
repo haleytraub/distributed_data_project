@@ -1,6 +1,8 @@
 # distributed_data_project
 
 ## 1. Algorithm Purpose
+Parallel PCA is used for a multitude of reasons: 
+* Handling large datasets: 
 
 ## 2. Hyperparameters
 
