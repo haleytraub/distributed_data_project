@@ -82,6 +82,7 @@ datasets = [dataset1, dataset2, iris]
 n_components_list = [2, 2, 2]
 
 results = parallel_pca(datasets, n_components_list)
+```
 
 ### 6. Visualization or animation of algorithm steps or results
 
