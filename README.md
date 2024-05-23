@@ -113,6 +113,9 @@ results = parallel_pca(datasets, n_components_list)
    ```
 2.  A general lesson I learned was that when making tasks parallel, the overhead of managing multiple processes, can sometimes result in a slower performance than doing the task regularly. The overhead can include the time required for process creation, context switching, and communication between processes, which can outweigh the benefits of parallel execution for smaller workloads.
 
+3.  In class, we have previously used the command map to apply a given function to each item of a list. Map is limited to functions takes a single argument. For functions that require multiple arguments, starmap from the multiprocessing module can be used. This is the following code I used the command in. I need to pass in multiple arguments (subset and n_component_list). 
+   pca_result = pool.starmap(perform_PCA, [(subset, n_component_list[i]) for subset in subsets])
+
 ### 9. Unit-testing strategy
 What steps of the algorithm were tested individually?
 Code-coverage measurement
