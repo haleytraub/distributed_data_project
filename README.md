@@ -137,6 +137,7 @@ I decided to run 5 different tests and they can be described below:
 
 2. My third unit test tests the manual PCA to make sure it is calculating it correctly. I do this by calling the sklearn package and using PCA(). If the results are equal, then they should pass.
 ```python
+   def test_manual_PCA(self):
         data = np.array([[2, 4, 6, 8, 10],
                  [1, 3, 5, 7, 9],
                  [11, 13, 15, 17, 19],
@@ -163,6 +164,8 @@ I decided to run 5 different tests and they can be described below:
 ```
 4. Lastly, my last piece of code ensures that multiprocessing is actually in use. It does this by making sure that there is more than one unqiue PID (process) when running the code.
  ```python
+
+   def test_parallel(self):
         datasets = [generate_dataset(100,5), generate_dataset(50,2), generate_dataset(300000, 4)]
         n_components = [2, 2, 5]
 
