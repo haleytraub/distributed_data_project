@@ -4,6 +4,7 @@ from multiprocessing import Pool, cpu_count
 from sklearn.datasets import load_iris
 import os
 import time
+import matplotlib.pyplot as plt
 
 def manual_PCA(data, n_components = 2):
     mean = np.mean(data, axis=0)
@@ -38,7 +39,6 @@ def iris_data():
     iris = load_iris()
     return iris.data
 
-
 def parallel_PCA(datasets, n_component_list):
     subset = cpu_count()
     results = []
@@ -52,5 +52,13 @@ def parallel_PCA(datasets, n_component_list):
             results.append(combine_results)
         parallel_time = time.time() - start_time
 
-    print(f"Parallel processing took {parallel_time:.2f} seconds")
+    print(f"Total time for Parallel PCA on all three datasets: {parallel_time:.2f} seconds")
     return results
+
+def plot_results(data, title):
+    plt.figure(figsize=(8, 6))
+    plt.scatter(data[:, 0], data[:, 1], edgecolor='k', s=50)
+    plt.title(title)
+    plt.xlabel('Principal Component 1')
+    plt.ylabel('Principal Component 2')
+    plt.show()
