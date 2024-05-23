@@ -91,6 +91,17 @@ results = parallel_pca(datasets, n_components_list)
 
 ### 7. Benchmark Results
 
+* Effectiveness: An effective parallel PCA would successfully reduce the number of components. For each of the given datasets, PCA effectively reduces the components to 2. Since there are only two components, we can now visualize. The firsdat dataset went from 5 to 2, the second one went from 6 to 2, and the iris dataset went from 5 to 2.
+
+<img width="743" alt="Screenshot 2024-05-23 at 11 33 56 AM" src="https://github.com/haleytraub/distributed_data_project/assets/47033798/010f9dd2-4113-4320-8e4f-453d976905cf">
+<img width="754" alt="Screenshot 2024-05-23 at 11 34 04 AM" src="https://github.com/haleytraub/distributed_data_project/assets/47033798/31593424-b4d6-4e29-86d0-1269defecd7c">
+<img width="750" alt="Screenshot 2024-05-23 at 11 34 10 AM" src="https://github.com/haleytraub/distributed_data_project/assets/47033798/0835c09f-607f-4437-a0d2-38c5ab797dba">
+
+
+
+
+
+
 Comparison of efficiency and effectiveness 
 
 ### 8. Lessons Learned
