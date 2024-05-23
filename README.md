@@ -22,35 +22,16 @@ Variations of PCA can be seen below:
 * Stochastic PCA: Approximates principal components using randomization, processing data in smaller chunks in parallel.
 
 ## 4. Pseudo code
+      Import Necessary Packages
+      Compute Manual PCA
+         Calculate the mean of each feature
+         Mean center the data 
 
-1. Initialize MPI
-2. Get rank and size of the MPI Communicator
-3. If rank == 0
-   
-      Load the dataset
-   
-      Standardize the dataset
-   
-      Split the data into subsets
-   
-5. Open the channel from the dataset to the processes
-6. Split the dataset into local datasets for each process
-7. For each process:
+         Calculate the covariance matrix 
+         Compute eigenvalues and eigenvectors 
 
-    Perform PCA on the local dataset
-
-    Compute the covariance matrix of the dataset
-
-9. Sum the covariance matrix from each process
-10. Sum the size of all the local datasets 
-11. Divide the summed covariance matrix by the total number of samples
-12. Compute the eigenvectors and eigenvalues of the total covariance matrix
-13. Sort the eigenvectors based on the eigenvalues in descending order
-14. Select the top k eigenvectors to retain
-15. Broadcast the selected eigenvectors to all processes
-16. Transform data (projecting the local subsets on selected eigenvectors)
-17. Reconstruct the global transformed dataset (gathered from transformed data)
-18. Finalize MPI
+         Sort eigenvalues in descending order and get their indices
+         Sort eigenvectors according to the sorted indices
 
 ## 5. Example code to import and use module
 
