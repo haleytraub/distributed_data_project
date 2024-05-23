@@ -8,7 +8,8 @@
    visualization, Parallel PCA can be utilized.
 ### 2. Hyperparameters
  * _n_components_: number of principal components to keep.
- * _svd_solver_: The solver to use for decomposition to include auto, full, arpack, randomized.
+ * _svd_solver_: The solver to use for decomposition to include auto, full, arpacko or randomized. It is important to note that because we are not using the sklearn package, this will not be utilized in my code.
+ * _subset_: Currently using the CPU count, however, a explicit number could be set. 
 
 ### 3. Background
    Principal component analysis is an unsupervised learning dimensionality reduction technique. The goal is    to reduce the data from their original high- dimensional feature space to a new set of components or principal component axes. The algorithm utilizes parallel processing by first splitting the dataset into local subsets. After this is done, each process will perform two tasks to include PCA calculation and covariance matrix computation. The reasoning behind this strategy is to mitigate the amount of time it takes to sort through large datasets when performing operations. By distributing the dataset across multiple processes, it could reduce the processing time. Once the PCA and covariance matrix are completed on each subset, the results are combined to produce a final PCA output. The final PCA output represents the reduced dimension of the original dataset, which will be achieved by the utilization of distributed and parallel processing techniques. 
