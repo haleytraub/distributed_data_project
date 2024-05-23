@@ -95,12 +95,13 @@ Comparison of efficiency and effectiveness
 
 ### 8. Lessons Learned
 1. I was able to output the Process ID for each of the data subsets. I know we have used this technqiue before but this was confirmation for me that multiprocessing was being utilized. If it didn't use multiprocessing, it would only have had one Process ID.
-   ''' python 
+
+   ``` python 
    def perform_PCA(data, n_components):
        print(f"Process ID: {os.getpid()} is processing data subset")
        transformed_data = manual_PCA(data, n_components)
        return transformed_data
-   '''
+   ```
 
 ### 9. Unit-testing strategy
 What steps of the algorithm were tested individually?
