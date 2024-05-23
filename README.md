@@ -99,7 +99,7 @@ results = parallel_pca(datasets, n_components_list)
 
 * Efficiency: A measure of efficiency can be time. I compared how long it took for regular PCA to run as well as the Parallel PCA. Further, I made sure the program utilized multiple processes. As you can see from the figure below, regular PCA was a lot faster than Parallel PCA. This can be attributed to the fact that these datasets are quite small in comparison. The overhead from parallel processing makes it not worth the extra time for these smaller datasets.
 
-<img width="325" alt="Screenshot 2024-05-23 at 11 53 48 AM" src="https://github.com/haleytraub/distributed_data_project/assets/47033798/7bbed012-00df-47dd-a813-34e9c95f258c">
+<img width="500" alt="Screenshot 2024-05-23 at 11 53 48 AM" src="https://github.com/haleytraub/distributed_data_project/assets/47033798/7bbed012-00df-47dd-a813-34e9c95f258c">
 
 
 ### 8. Lessons Learned
