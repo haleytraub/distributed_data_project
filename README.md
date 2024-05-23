@@ -92,3 +92,10 @@ results = parallel_pca(datasets, n_components_list)
 ### 7. Benchmark Results
 
 Comparison of efficiency and effectiveness 
+
+### 8. Lessons Learned
+Such as new code snippets to support some computations
+
+### 9. Unit-testing strategy
+What steps of the algorithm were tested individually?
+Code-coverage measurement
