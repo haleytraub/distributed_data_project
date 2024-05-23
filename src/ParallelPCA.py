@@ -21,6 +21,12 @@ def manual_PCA(data, n_components = 2):
 
     return transformed_data
 
+def perform_PCA(data, n_components, pid_list):
+    pid = os.getpid()
+    pid_list.append(pid)
+    print(f"Process ID: {pid} is processing data subset")
+    transformed_data = manual_PCA(data, n_components)
+    return transformed_data
 
 def divide_data(data, subset):
     return np.array_split(data, subset)
