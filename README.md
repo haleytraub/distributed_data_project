@@ -41,21 +41,30 @@ Variations of PCA can be seen below:
          Call manual_PCA
 
       Define a function to divide data into subsets
-
       Define a function to combine the PCA of local subsets
-
       Define a function to generate a dataset with certain n_samples and n_features
-
       Define a function to load the iris dataset
 
       Generate two random datasets 
-
-      Create an array of the datasets 
-
+      Create a list of the datasets 
       Get the number of CPU_count 
 
-      In the main function execution:
-      
+      if the main execution:
+          create pool of processes with num_cores processes
+          start timer
+          Create empty list of results
+
+         for each dataset in datasets:
+              Divide datasets into subset
+              Perform PCA on subsets utilizing multiprocessing
+              Combine the results of subsets
+              Add combined_results to results list
+
+         stop timer
+         print time taken for parallel processing
+
+         Convert results to a DataFrame to visualize data
+         Print first few rows of each DataFrame
 
 ## 5. Example code to import and use module
 
