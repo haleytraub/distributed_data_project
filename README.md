@@ -23,7 +23,7 @@ Variations of PCA can be seen below:
 
 ## 4. Pseudo code
       Import Necessary Packages
-      Compute Manual PCA
+      Define a function for Manual PCA
          Calculate the mean of each feature
          Mean center the data 
 
@@ -32,6 +32,30 @@ Variations of PCA can be seen below:
 
          Sort eigenvalues in descending order and get their indices
          Sort eigenvectors according to the sorted indices
+
+         Select the top n_component vectors 
+         Transform the data
+
+      Define a function to perform PCA on a dataset
+         Keep track of the PID for each subset
+         Call manual_PCA
+
+      Define a function to divide data into subsets
+
+      Define a function to combine the PCA of local subsets
+
+      Define a function to generate a dataset with certain n_samples and n_features
+
+      Define a function to load the iris dataset
+
+      Generate two random datasets 
+
+      Create an array of the datasets 
+
+      Get the number of CPU_count 
+
+      In the main function execution:
+      
 
 ## 5. Example code to import and use module
 
