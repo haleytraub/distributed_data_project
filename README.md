@@ -97,7 +97,10 @@ results = parallel_pca(datasets, n_components_list)
 <img width="200" alt="Screenshot 2024-05-23 at 11 34 04 AM" src="https://github.com/haleytraub/distributed_data_project/assets/47033798/31593424-b4d6-4e29-86d0-1269defecd7c">
 <img width="200" alt="Screenshot 2024-05-23 at 11 34 10 AM" src="https://github.com/haleytraub/distributed_data_project/assets/47033798/0835c09f-607f-4437-a0d2-38c5ab797dba">
 
-* Efficiency: 
+* Efficiency: A measure of efficiency can be time. I compared how long it took for regular PCA to run as well as the Parallel PCA. Further, I made sure the program utilized multiple processes. As you can see from the figure below, regular PCA was a lot faster than Parallel PCA. This can be attributed to the fact that these datasets are quite small in comparison. The overhead from parallel processing makes it not worth the extra time for these smaller datasets.
+
+<img width="325" alt="Screenshot 2024-05-23 at 11 53 48 AM" src="https://github.com/haleytraub/distributed_data_project/assets/47033798/7bbed012-00df-47dd-a813-34e9c95f258c">
+
 
 ### 8. Lessons Learned
 1. I was able to output the Process ID for each of the data subsets. I know we have used this technqiue before but this was confirmation for me that multiprocessing was being utilized. If it didn't use multiprocessing, it would only have had one Process ID.
