@@ -122,11 +122,57 @@ results = parallel_pca(datasets, n_components_list)
    pca_result = pool.starmap(perform_PCA, [(subset, n_component_list[i], pid_list) for subset in subsets])
 ```
 ### 9. Unit-testing strategy
-What steps of the algorithm were tested individually?
-Code-coverage measurement
-### 8. Lessons Learned
-Such as new code snippets to support some computations
 
-### 9. Unit-testing strategy
-What steps of the algorithm were tested individually?
-Code-coverage measurement
+I decided to run 5 different tests and they can be described below:
+1. The first two deal with testing the dataset functions. I wanted to make sure the datasets were generating/ loading in correctly. 
+```python
+      def test_generate_dataset(self):
+        dataset = generate_dataset(100, 5)
+        self.assertEqual(dataset.shape,(100, 5))
+
+       def test_iris_data(self):
+        data = iris_data()
+        self.assertEqual(data.shape,(150, 4))
+```
+
+2. My third unit test tests the manual PCA to make sure it is calculating it correctly. I do this by calling the sklearn package and using PCA(). If the results are equal, then they should pass.
+```python
+        data = np.array([[2, 4, 6, 8, 10],
+                 [1, 3, 5, 7, 9],
+                 [11, 13, 15, 17, 19],
+                 [12, 14, 16, 18, 20]])
+
+        handPCA = manual_PCA(data, n_components= 1)
+
+        from sklearn.decomposition import PCA
+        pca = PCA(n_components= 1)
+        sklearnpca = pca.fit_transform(data)
+
+        np.testing.assert_allclose(np.abs(handPCA), np.abs(sklearnpca))
+```
+3. My fourth unit test tests the divde_dataset function to make sure the data is split into subgroups.
+```python
+    def test_divide_data(self):
+        data = np.array([[2, 4, 6, 8, 10],
+                 [1, 3, 5, 7, 9],
+                 [11, 13, 15, 17, 19],
+                 [12, 14, 16, 18, 20]])
+
+        subsets = divide_data(data, 3)
+        self.assertEqual(len(subsets),3)
+```
+4. Lastly, my last piece of code ensures that multiprocessing is actually in use. It does this by making sure that there is more than one unqiue PID (process) when running the code.
+ ```python
+        datasets = [generate_dataset(100,5), generate_dataset(50,2), generate_dataset(300000, 4)]
+        n_components = [2, 2, 5]
+
+        results, pid_list = parallel_PCA(datasets, n_components)
+
+        unique_pid = set(pid_list)
+        
+        self.assertGreater(len(unique_pid), 1)
+```
+
+All of these unit tests do something very different but still help in making sure the overall code runs!
+
+
