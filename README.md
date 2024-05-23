@@ -106,13 +106,14 @@ results = parallel_pca(datasets, n_components_list)
 1. I was able to output the Process ID for each of the data subsets. I know we have used this technqiue before but this was confirmation for me that multiprocessing was being utilized. If it didn't use multiprocessing, it would only have had one Process ID.
 
    ``` python 
-def perform_PCA(data, n_components, pid_list):
-    pid = os.getpid()
-    pid_list.append(pid)
-    print(f"Process ID: {pid} is processing data subset")
-    transformed_data = manual_PCA(data, n_components)
-    return transformed_data
+   def perform_PCA(data, n_components, pid_list):
+       pid = os.getpid()
+       pid_list.append(pid)
+       print(f"Process ID: {pid} is processing data subset")
+       transformed_data = manual_PCA(data, n_components)
+       return transformed_data
    ```
+
 2.  A general lesson I learned was that when making tasks parallel, the overhead of managing multiple processes, can sometimes result in a slower performance than doing the task regularly. The overhead can include the time required for process creation, context switching, and communication between processes, which can outweigh the benefits of parallel execution for smaller workloads.
 
 3.  In class, we have previously used the command map to apply a given function to each item of a list. Map is limited to functions takes a single argument. For functions that require multiple arguments, starmap from the multiprocessing module can be used. This is the following code I used the command in. I need to pass in multiple arguments (subset and n_component_list).
