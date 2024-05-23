@@ -111,6 +111,7 @@ results = parallel_pca(datasets, n_components_list)
        transformed_data = manual_PCA(data, n_components)
        return transformed_data
    ```
+2.  A general lesson I learned was that when making tasks parallel, the overhead of managing multiple processes, can sometimes result in a slower performance than doing the task regularly. The overhead can include the time required for process creation, context switching, and communication between processes, which can outweigh the benefits of parallel execution for smaller workloads.
 
 ### 9. Unit-testing strategy
 What steps of the algorithm were tested individually?
