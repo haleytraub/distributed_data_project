@@ -72,7 +72,7 @@ Please refer to the other coding modules in this repository for an example impor
 
 ## 6. Visualization or animation of algorithm steps or results
 
-![alt text](https://github.com/[username]/[reponame]/blob/[branch]/image.jpg?raw=true)
+(https://github.com/haleytraub/distributed_data_project/blob/main/Algorithm%20Project.drawio.png))
 
 ## 7. Benchmark Results
 
