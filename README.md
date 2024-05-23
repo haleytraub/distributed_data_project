@@ -71,7 +71,18 @@ Variations of PCA can be seen below:
 
 ### 5. Example code to import and use module
 
-Please refer to the other coding modules in this repository for an example import/ use module.
+```python
+from src.parallel_pca import parallel_pca, generate_dataset, iris_data
+
+dataset1 = generate_dataset(10000, 10)
+dataset2 = generate_dataset(300000, 6)
+iris = iris_data()
+
+datasets = [dataset1, dataset2, iris]
+n_components_list = [2, 2, 2]
+
+results = parallel_pca(datasets, n_components_list)
+```
 
 ### 6. Visualization or animation of algorithm steps or results
 
@@ -80,4 +91,42 @@ Please refer to the other coding modules in this repository for an example impor
 
 ### 7. Benchmark Results
 
-Comparison of efficiency and effectiveness 
+* Effectiveness: An effective parallel PCA would successfully reduce the number of components. For each of the given datasets, PCA effectively reduces the components to 2. Since there are only two components, we can now visualize. The first dataset went from 10 to 2, the second one went from 6 to 2, and the iris dataset went from 5 to 2.
+
+<img width="200" alt="Screenshot 2024-05-23 at 11 33 56 AM" src="https://github.com/haleytraub/distributed_data_project/assets/47033798/010f9dd2-4113-4320-8e4f-453d976905cf">
+<img width="200" alt="Screenshot 2024-05-23 at 11 34 04 AM" src="https://github.com/haleytraub/distributed_data_project/assets/47033798/31593424-b4d6-4e29-86d0-1269defecd7c">
+<img width="200" alt="Screenshot 2024-05-23 at 11 34 10 AM" src="https://github.com/haleytraub/distributed_data_project/assets/47033798/0835c09f-607f-4437-a0d2-38c5ab797dba">
+
+* Efficiency: A measure of efficiency can be time. I compared how long it took for regular PCA to run as well as the Parallel PCA. Further, I made sure the program utilized multiple processes. As you can see from the figure below, regular PCA was a lot faster than Parallel PCA. This can be attributed to the fact that these datasets are quite small in comparison. The overhead from parallel processing makes it not worth the extra time for these smaller datasets.
+
+<img width="500" alt="Screenshot 2024-05-23 at 11 53 48 AM" src="https://github.com/haleytraub/distributed_data_project/assets/47033798/7bbed012-00df-47dd-a813-34e9c95f258c">
+
+
+### 8. Lessons Learned
+1. I was able to output the Process ID for each of the data subsets. I know we have used this technqiue before but this was confirmation for me that multiprocessing was being utilized. If it didn't use multiprocessing, it would only have had one Process ID.
+
+   ``` python 
+   def perform_PCA(data, n_components, pid_list):
+       pid = os.getpid()
+       pid_list.append(pid)
+       print(f"Process ID: {pid} is processing data subset")
+       transformed_data = manual_PCA(data, n_components)
+       return transformed_data
+   ```
+
+2.  A general lesson I learned was that when making tasks parallel, the overhead of managing multiple processes, can sometimes result in a slower performance than doing the task regularly. The overhead can include the time required for process creation, context switching, and communication between processes, which can outweigh the benefits of parallel execution for smaller workloads.
+
+3.  In class, we have previously used the command map to apply a given function to each item of a list. Map is limited to functions takes a single argument. For functions that require multiple arguments, starmap from the multiprocessing module can be used. This is the following code I used the command in. I need to pass in multiple arguments (subset and n_component_list).
+
+ ```python
+   pca_result = pool.starmap(perform_PCA, [(subset, n_component_list[i], pid_list) for subset in subsets])
+```
+### 9. Unit-testing strategy
+What steps of the algorithm were tested individually?
+Code-coverage measurement
+### 8. Lessons Learned
+Such as new code snippets to support some computations
+
+### 9. Unit-testing strategy
+What steps of the algorithm were tested individually?
+Code-coverage measurement
