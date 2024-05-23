@@ -73,7 +73,8 @@ Please refer to the other coding modules in this repository for an example impor
 
 ### 6. Visualization or animation of algorithm steps or results
 
-(https://github.com/haleytraub/distributed_data_project/blob/main/Algorithm%20Project.drawio.png))
+![Algorithm Project drawio](https://github.com/haleytraub/distributed_data_project/assets/47033798/57607108-566e-42ca-bd9a-3feba32af9ce)
+
 
 ### 7. Benchmark Results
 
