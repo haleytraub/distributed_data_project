@@ -12,13 +12,12 @@ if __name__ == "__main__":
     dataset_titles = ["Random Dataset 1", "Random Dataset 2", "Iris Dataset"]
     n_components_list = [2, 2, 2]
 
-    results = parallel_PCA(datasets, n_components_list)
+    results, pid_list = parallel_PCA(datasets, n_components_list)
 
     start_time = time.time()
     regular_times = []
     for data in datasets:
-        pca_result = manual_PCA(data, n_components=2)
-        regular_times.append(pca_result)
+        manual_PCA(data, n_components=2)
     total_regular_time = time.time() - start_time
 
     print(f"Total time for regular PCA on all datasets: {total_regular_time:.6f} seconds")
@@ -26,5 +25,3 @@ if __name__ == "__main__":
     plot_results(results[0], "PCA Result for Random Dataset 1")
     plot_results(results[1], "PCA Result for Random Dataset 2")
     plot_results(results[2], "PCA Result for Iris Dataset")
-
-

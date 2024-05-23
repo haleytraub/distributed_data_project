@@ -1,6 +1,6 @@
 import numpy as np 
 import pandas as pd
-from multiprocessing import Pool, cpu_count
+from multiprocessing import Pool, cpu_count, Manager
 from sklearn.datasets import load_iris
 import os
 import time
@@ -21,8 +21,10 @@ def manual_PCA(data, n_components = 2):
 
     return transformed_data
 
-def perform_PCA(data, n_components):
-    print(f"Process ID: {os.getpid()} is processing data subset")
+def perform_PCA(data, n_components, pid_list):
+    pid = os.getpid()
+    pid_list.append(pid)
+    print(f"Process ID: {pid} is processing data subset")
     transformed_data = manual_PCA(data, n_components)
     return transformed_data
 
@@ -43,17 +45,21 @@ def parallel_PCA(datasets, n_component_list):
     subset = cpu_count()
     results = []
 
+    manager = Manager()
+    pid_list = manager.list()
+
     with Pool(cpu_count()) as pool:
         start_time = time.time()
         for i, data in enumerate(datasets):
             subsets = divide_data(data, subset)
-            pca_result = pool.starmap(perform_PCA, [(subset, n_component_list[i]) for subset in subsets])
+            pca_result = pool.starmap(perform_PCA, [(subset, n_component_list[i], pid_list) for subset in subsets])
             combine_results = combine_PCA(pca_result)
             results.append(combine_results)
         parallel_time = time.time() - start_time
 
     print(f"Total time for Parallel PCA on all three datasets: {parallel_time:.2f} seconds")
-    return results
+    print(f"All PIDs: {list(pid_list)}")
+    return results, list(pid_list)
 
 def plot_results(data, title):
     plt.figure(figsize=(8, 6))
@@ -61,4 +67,4 @@ def plot_results(data, title):
     plt.title(title)
     plt.xlabel('Principal Component 1')
     plt.ylabel('Principal Component 2')
-    plt.show()
+    plt.savefig(f'{title}')
