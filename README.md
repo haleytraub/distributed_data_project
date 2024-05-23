@@ -71,7 +71,17 @@ Variations of PCA can be seen below:
 
 ### 5. Example code to import and use module
 
-Please refer to the other coding modules in this repository for an example import/ use module.
+```python
+from src.parallel_pca import parallel_pca, generate_dataset, iris_data
+
+dataset1 = generate_dataset(10000, 5)
+dataset2 = generate_dataset(300000, 6)
+iris = iris_data()
+
+datasets = [dataset1, dataset2, iris]
+n_components_list = [2, 2, 2]
+
+results = parallel_pca(datasets, n_components_list)
 
 ### 6. Visualization or animation of algorithm steps or results
 
